@@ -1,4 +1,4 @@
-package info.jerrinot.hzbridge3;
+package hz3bridge;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.EventJournalConfig;
@@ -10,5 +10,4 @@ public class Server {
         config.addEventJournalConfig(new EventJournalConfig().setMapName("myMap").setEnabled(true));
         Hazelcast.newHazelcastInstance(config);
     }
-
 }

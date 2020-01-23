@@ -1,3 +1,5 @@
+package hz3bridge;
+
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
