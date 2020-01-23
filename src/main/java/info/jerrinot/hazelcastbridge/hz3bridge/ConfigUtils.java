@@ -5,6 +5,7 @@ import com.hazelcast.client.config.XmlClientConfigBuilder;
 import com.hazelcast.nio.IOUtil;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -41,7 +42,7 @@ final class ConfigUtils {
         Path tempFile = null;
         try {
             tempFile = Files.createTempFile("client-config", ".xml");
-            Files.writeString(tempFile, xmlConfig);
+            Files.write(tempFile, xmlConfig.getBytes(StandardCharsets.UTF_8));
             XmlClientConfigBuilder configBuilder = new XmlClientConfigBuilder(tempFile.toFile());
             return configBuilder.build();
         } catch (IOException e) {
