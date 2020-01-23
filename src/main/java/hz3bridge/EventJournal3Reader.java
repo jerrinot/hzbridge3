@@ -11,6 +11,7 @@ import com.hazelcast.internal.journal.EventJournalReader;
 import com.hazelcast.map.journal.EventJournalMapEvent;
 import com.hazelcast.nio.IOUtil;
 import com.hazelcast.ringbuffer.ReadResultSet;
+import com.hazelcast.util.ExceptionUtil;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,28 +22,11 @@ public final class EventJournal3Reader<K, V> {
     private final com.hazelcast.internal.journal.EventJournalReader<EventJournalMapEvent<K, V>> reader;
 
     public EventJournal3Reader(String xmlConfig, String mapName) {
-        Path tempFile = null;
-        try {
-            tempFile = Files.createTempFile("client-config", ".xml");
-            Files.writeString(tempFile, xmlConfig);
-            XmlClientConfigBuilder configBuilder = new XmlClientConfigBuilder(tempFile.toFile());
-            ClientConfig config = configBuilder.build();
-            client = HazelcastClient.newHazelcastClient(config);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            deleteQuietly(tempFile);
-        }
+        client = HazelcastClient.newHazelcastClient(ConfigUtils.toConfig(xmlConfig));
         if (mapName != null) {
             reader = (EventJournalReader<EventJournalMapEvent<K, V>>) client.getMap(mapName);
         } else {
             reader = null;
-        }
-    }
-
-    private void deleteQuietly(Path path) {
-        if (path != null) {
-            IOUtil.deleteQuietly(path.toFile());
         }
     }
 

@@ -8,6 +8,7 @@ public class Server {
     public static void main(String[] args) {
         Config config = new Config();
         config.addEventJournalConfig(new EventJournalConfig().setMapName("myMap").setEnabled(true));
+        config.getNetworkConfig().setPort(3120);
         Hazelcast.newHazelcastInstance(config);
     }
 }
