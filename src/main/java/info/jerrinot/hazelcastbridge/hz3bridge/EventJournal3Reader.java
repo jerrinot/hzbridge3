@@ -1,21 +1,13 @@
-package hz3bridge;
+package info.jerrinot.hazelcastbridge.hz3bridge;
 
 import com.hazelcast.client.HazelcastClient;
-import com.hazelcast.client.config.ClientConfig;
-import com.hazelcast.client.config.XmlClientConfigBuilder;
 import com.hazelcast.client.impl.clientside.HazelcastClientProxy;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ICompletableFuture;
 import com.hazelcast.internal.journal.EventJournalInitialSubscriberState;
 import com.hazelcast.internal.journal.EventJournalReader;
 import com.hazelcast.map.journal.EventJournalMapEvent;
-import com.hazelcast.nio.IOUtil;
 import com.hazelcast.ringbuffer.ReadResultSet;
-import com.hazelcast.util.ExceptionUtil;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public final class EventJournal3Reader<K, V> {
     private final HazelcastInstance client;

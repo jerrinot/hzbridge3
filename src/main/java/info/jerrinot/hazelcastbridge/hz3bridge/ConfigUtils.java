@@ -1,4 +1,4 @@
-package hz3bridge;
+package info.jerrinot.hazelcastbridge.hz3bridge;
 
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.client.config.XmlClientConfigBuilder;
