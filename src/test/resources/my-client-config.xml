@@ -6,7 +6,7 @@
 
     <network>
         <cluster-members>
-            <address>127.0.0.1:999</address>
+            <address>127.0.0.1:3120</address>
         </cluster-members>
     </network>
 </hazelcast-client>
