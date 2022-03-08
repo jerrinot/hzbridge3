@@ -10,7 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <hazelcast3.version>3.12.13-SNAPSHOT</hazelcast3.version>
+        <hazelcast3.version>5.1</hazelcast3.version>
     </properties>
 
     <dependencies>
